@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'Kiak';
+    src: url(../fonts/Kiak-Bold.otf);
+}
 body {
     margin: 0;
     padding: 0;
@@ -42,6 +46,7 @@ body {
     text-align: center;
 }
 .grid-item-row h1{
+    font-family: 'Kiak';
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,4 +79,7 @@ body {
     width: 80%;
     display: flex;
     justify-content: center;
+}
+h3{
+    font-family: 'Kiak';
 }
