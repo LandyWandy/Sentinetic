@@ -23,5 +23,11 @@
   "homepage": "https://github.com/LandyWandy/Sentinetic#readme",
   "devDependencies": {
     "concurrently": "^8.2.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongod": "^2.0.0",
+    "mongoose": "^7.3.4",
+    "node": "^20.4.0"
   }
 }
