@@ -16,6 +16,12 @@ const typeDefs = gql`
     neutral: Int
     negative: Int
   }
+
+  type Query {
+    searchResults: [Search]
+    user(id: ID!): User
+    users: [User]
+  }
 `;
 
 module.exports = typeDefs;
