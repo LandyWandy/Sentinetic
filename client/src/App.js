@@ -1,4 +1,28 @@
 import React from "react";
+import Main from "./components/main"
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Example from './components/pieChart';
+
+
+function App() {
+    return (
+        <>
+        
+        <div className="pie-chart">
+
+      <Example />
+
+        </div>
+
+        <div>
+
+            <Main />
+                
+        </div>
+
+        </>
+    );
+=======
 import { useState } from "react";
 import Main from "./components/main";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -12,13 +36,4 @@ function App() {
     </div>
   );
 }
-
-// function App() {
-//    const { currentForm, setCurrentForm } = useState("login");
-//   return (
-//     <div>
-//       <Login />
-//     </div>
-//   );
-// }
 export default App;
