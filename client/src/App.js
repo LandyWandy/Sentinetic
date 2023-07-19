@@ -3,9 +3,14 @@ import Main from "./components/main"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Example from './components/pieChart';
 
+import { useState } from "react";
+import Main from "./components/main";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Register from "./components/register";
+import Login from "./components/login";
 
 function App() {
-    return (
+  return (
         <>
         
         <div className="pie-chart">
@@ -14,14 +19,20 @@ function App() {
 
         </div>
 
-        <div>
-
-            <Main />
-                
-        </div>
+    <div>
+      <Main />
+    </div>
 
         </>
-    );
+  );
 }
 
+// function App() {
+//    const { currentForm, setCurrentForm } = useState("login");
+//   return (
+//     <div>
+//       <Login />
+//     </div>
+//   );
+// }
 export default App;
