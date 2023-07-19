@@ -1,10 +1,10 @@
 const { TwitterApi } = require('twitter-api-v2');
 require('dotenv').config();
 
-const API_KEY = process.env.API_KEY
-const API_SECRET = process.env.API_SECRET
-const ACCESS_TOKEN = process.env.ACCESS_TOKEN
-const ACCESS_SECRET = process.env.ACCESS_SECRET
+const API_KEY = process.env.API_KEY;
+const API_SECRET = process.env.API_SECRET;
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
+const ACCESS_SECRET = process.env.ACCESS_SECRET;
 
 const client = new TwitterApi({
   appKey: API_KEY,
@@ -16,7 +16,7 @@ const client = new TwitterApi({
 const fetchTweets = async () => {
   try {
     const tweetsResponse = await client.v2.get('tweets/search/recent', {
-      query: '#Barbie -is:retweet',
+      query: '#tuesdayvibe -is:retweet',
       'tweet.fields': 'public_metrics,created_at,lang',
       'expansions': 'author_id',
       'user.fields': 'username',
@@ -36,11 +36,11 @@ const fetchTweets = async () => {
       return modifiedText;
     });
 
-    console.log(formattedTweets);
+    return formattedTweets;
   } catch (error) {
     console.error(error);
+    return [];
   }
-}
+};
 
-// Call the function to fetch tweets
-fetchTweets();
+module.exports = fetchTweets;
