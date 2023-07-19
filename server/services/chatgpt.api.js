@@ -22,10 +22,23 @@ const aiSentAnalysis = async (formattedTweets) => {
       temperature: 0.2,
     });
 
-    console.log(chatCompletion.data.choices[0].message);
+    const response = chatCompletion.data.choices[0].message.content;
+    const regexResult = response.match(/Positive: (\d+) Negative: (\d+) Neutral: (\d+)/);
+
+    if (regexResult) {
+      const positiveCount = regexResult[1];
+      const negativeCount = regexResult[2];
+      const neutralCount = regexResult[3];
+    
+      const result = `${positiveCount},${negativeCount},${neutralCount}`;
+      console.log(result);
+    } else {
+      console.log("Failed to extract sentiment counts from the response."); //No sentiments returned from aiSentAnalysis
+    }
   } catch (error) {
     console.error(error);
   }
 };
+
 
 module.exports = aiSentAnalysis;
