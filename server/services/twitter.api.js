@@ -16,7 +16,7 @@ const client = new TwitterApi({
 const fetchTweets = async () => {
   try {
     const tweetsResponse = await client.v2.get('tweets/search/recent', {
-      query: '#memes -is:retweet',
+      query: '#Barbie -is:retweet',
       'tweet.fields': 'public_metrics,created_at,lang',
       'expansions': 'author_id',
       'user.fields': 'username',
@@ -25,11 +25,18 @@ const fetchTweets = async () => {
 
     const { data: tweets, includes: { users } } = tweetsResponse;
 
-    const englishTweets = tweets.filter(tweet => tweet.lang === 'en'); // Only keep tweets that are in English
+    const editedTweets = tweets.filter(tweet => tweet.lang === 'en');
+    const formattedTweets = editedTweets.map(tweet => {
+      const modifiedText = tweet.text
+        .replace(/\n/g, '') // Remove newline characters
+        .replace(/�/g, '') // Remove � symbol
+        .replace(/\+/g, '') // Remove plus sign
+        .replace(/[\u{1F600}-\u{1F6FF}]/gu, ''); // Remove emojis
+    
+      return modifiedText;
+    });
 
-    // We'll now have an array of Tweet objects in `tweets`, and an array of user objects (authors of the tweets) in `users`
-
-    console.log(englishTweets);
+    console.log(formattedTweets);
   } catch (error) {
     console.error(error);
   }
