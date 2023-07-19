@@ -14,6 +14,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+    z-index: -5;
 }
 .form {
     background-image: url('../images/Form.svg');
@@ -34,7 +35,7 @@ body {
     background-color: rgb(255, 255, 255);
     display: grid;
     grid-template-columns: 1fr 1fr; /* One column, full width for the top child */
-    grid-template-rows: 12.5% 1fr; /* Auto height for the top child, and the rest split in halves */
+    grid-template-rows: 12.5% 1fr 25%; /* Auto height for the top child, and the rest split in halves */
     gap: 5px;
 }
 .grid-item-row{
@@ -54,20 +55,27 @@ body {
 }
 .grid-item-column{
     padding: 10px;
+    height: 100%;
+    max-width: 100%;
 }
 .left{
+    max-width: 100%;
+}
+.right{
+    max-width: 100%;
 }
 .input-form-header{
-    height: 20%;
+    height: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 .input-form-content{
+    padding-top: 5%;
     display: flex;
     justify-content: center;
-    height: 60%;
+    height: 20%;
     
 }
 .input-group{
@@ -82,4 +90,97 @@ body {
 }
 h3{
     font-family: 'Kiak';
+}
+.recent-searches-container{
+    background-color: whitesmoke;
+    grid-column: 1 / -1 ; /* Span full width (from the first column to the last) */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ; /* One column, full width for the top child */
+    grid-template-rows:  1fr 1fr 1fr 1fr ; /* Auto height for the top child, and the rest split in halves */
+    justify-content: center;
+    text-align: center;
+    padding: 1% 5% 1% 5%;
+    min-height: 72.5%;
+    max-height: 72.5%;
+    max-width: 100%;
+}
+.recent-search{
+    background-color: #645858;
+    color: white;
+    border-radius: 50px;
+    padding: 7.5px;
+    margin: 10px;
+    font-size: x-small;
+    min-width: 80%;
+    max-width: 80%;
+    display: flex;
+    justify-content: center;
+}
+.recent-search:hover{
+    opacity: 80%;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.relevant-tweets-container{
+    width: auto;
+    grid-column: 1 / -1; /* Span full width (from the first column to the last) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.content{
+    text-align: left;
+}
+.tweet{
+    background-color: white;
+    border: 1px solid #ccc;
+    width: 80%;
+    min-height: 50%;
+    max-height: 100%;
+    padding: 10px;
+    display: flex;
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+}
+.avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.name{
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    margin-right: 0.3em;
+}
+.handle{
+    color: #8899a6;
+    font-size: 13px;
+}
+.time{
+    padding-left: 0.3em;
+    color: #8899a6;
+}
+.time::before {
+    content: '\00b7  ';
+    padding-right: 0.3em;
+}
+.buttons{
+    margin-top: 10px;
+    margin-left: 2px;
+    font-size: 1.4em;
+    color: #aab8c2;
+}
+.buttons i{
+    width: 80px;
+}
+.icon{
+    padding: 5%;
+}
+.icon:hover{
+    cursor: pointer;
+
 }
