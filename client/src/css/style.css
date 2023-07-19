@@ -91,7 +91,7 @@ body {
 h3{
     font-family: 'Kiak';
 }
-.recent-searches-container{
+.recent-searches-container {
     background-color: whitesmoke;
     grid-column: 1 / -1 ; /* Span full width (from the first column to the last) */
     display: grid;
@@ -182,5 +182,18 @@ h3{
 }
 .icon:hover{
     cursor: pointer;
+
+}
+
+.recharts-responsive-container {
+    width: 1000px !important;
+    height: 1000px !important;
+    display: flex;
+}
+
+.recharts-surface {
+    display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
