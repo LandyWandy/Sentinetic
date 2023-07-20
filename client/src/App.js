@@ -22,13 +22,4 @@ function App() {
         </>
   );
 }
-
-// function App() {
-//    const { currentForm, setCurrentForm } = useState("login");
-//   return (
-//     <div>
-//       <Login />
-//     </div>
-//   );
-// }
 export default App;
