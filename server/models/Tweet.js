@@ -1,33 +1,27 @@
 const { Schema, model } = require('mongoose');
 
-const searchSchema = new Schema({
-  searchTerm: {
+const tweetSchema = new Schema({
+  text: {
     type: String,
     required: true,
-    maxLength: 100,
   },
   createdAt: {
     type: Date,
-    default: Date.now,
     required: true,
   },
-  impressions: {
+  likes: {
     type: Number,
   },
-  positive: {
-    type: Number,
-    required: true,
-  },
-  neutral: {
+  retweets: {
     type: Number,
     required: true,
   },
-  negative: {
+  comments: {
     type: Number,
     required: true,
-  }
+  },
 });
 
-const User = model('Search', searchSchema);
+const User = model('Tweet', tweetSchema);
 
 module.exports = User;
