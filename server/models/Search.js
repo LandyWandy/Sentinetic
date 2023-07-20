@@ -11,7 +11,10 @@ const searchSchema = new Schema({
     default: Date.now,
     required: true,
   },
-  impressions: {
+  tweets: [
+    { type: Schema.Types.ObjectId, ref: 'Tweets'}
+  ],
+  totalImpressions: {
     type: Number,
   },
   positive: {
