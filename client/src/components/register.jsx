@@ -55,11 +55,11 @@ function Register() {
             <form onSubmit={handleFormSubmit}>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input value={email} onChange={handleInputChange} type="email" class="form-control" id="username" placeholder="Enter a valid email"/>
+                    <input value={email} onChange={handleInputChange} type="email" name="email" class="form-control" id="username" placeholder="Enter a valid email"/>
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input value={password} onChange={handleInputChange} type="password" class="form-control" id="password" placeholder="Enter a strong password"/>
+                    <input value={password} onChange={handleInputChange} type="password" name="password" class="form-control" id="password" placeholder="Enter a strong password"/>
                 </div>
                 <button type="submit" class="btn btn-danger btn-block">{loading ? 'Loading...' : 'Submit'}</button>
                 
