@@ -14,8 +14,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div>
-        {/* <Main /> */}
-        <Register />
+        <Main />
+        {/* <Register /> */}
       </div>
     </ApolloProvider>
   );
