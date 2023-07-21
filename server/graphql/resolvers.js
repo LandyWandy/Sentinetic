@@ -39,6 +39,23 @@ const resolvers = {
       }
     },
   },
+
+  // ------------------------- Mutations -------------------------
+
+  Mutation: {
+    registerUser: async (parent, { email, password }) => {
+      try {
+        // Create a new user document
+        const user = await User.create({ email, password, searches: [] });
+        return user;
+      } catch (error) {
+        console.error('Error registering user:', error);
+        throw error;
+      }
+    },
+  },
 };
+
+
 
 module.exports = resolvers;

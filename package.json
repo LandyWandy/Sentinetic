@@ -23,5 +23,8 @@
   "homepage": "https://github.com/LandyWandy/Sentinetic#readme",
   "devDependencies": {
     "concurrently": "^8.2.0"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.17"
   }
 }

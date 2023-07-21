@@ -22,6 +22,6 @@ const tweetSchema = new Schema({
   },
 });
 
-const User = model('Tweet', tweetSchema);
+const Tweet = model('Tweet', tweetSchema);
 
-module.exports = User;
+module.exports = Tweet;

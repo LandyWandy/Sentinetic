@@ -31,6 +31,6 @@ const searchSchema = new Schema({
   }
 });
 
-const User = model('Search', searchSchema);
+const Search = model('Search', searchSchema);
 
-module.exports = User;
+module.exports = Search;
