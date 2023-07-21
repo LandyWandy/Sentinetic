@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { REGISTER_USER } from '../utils/mutations';
+import '../css/register.css';
 
 function Form() {
   const [email, setEmail] = useState('');
@@ -48,38 +49,28 @@ function Form() {
   };
 
   return (
-    <div>
-      <form className="form" onSubmit={handleFormSubmit}>
-        <input
-          value={email}
-          name="email"
-          onChange={handleInputChange}
-          type="email"
-          placeholder="Email"
-        />
-        <input
-          value={password}
-          name="password"
-          onChange={handleInputChange}
-          type="password"
-          placeholder="Password"
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? 'Loading...' : 'Submit'}
-        </button>
-      </form>
-      {errorMessage && (
-        <div>
-          <p className="error-text">{errorMessage}</p>
+    <section>
+        <div class="container">
+            <div class="register-container">
+                <h2>Register</h2>
+                <form onSubmit={handleFormSubmit}>
+                    <div class="form-group">
+                        <label for="username">Email:</label>
+                        <input value={email} onChange={handleInputChange} type="text" class="form-control" id="username" placeholder="Enter a valid email"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input value={password} onChange={handleInputChange} type="password" class="form-control" id="password" placeholder="Enter a strong password"/>
+                    </div>
+                    <button type="submit" class="btn btn-danger btn-block">Register</button>
+                    
+                </form>
+                <p> Already registered? <button class="btn btn-outline-danger">Login here</button></p>
+            </div>
         </div>
-      )}
-      {error && (
-        <div>
-          <p className="error-text">Error: {error.message}</p>
-        </div>
-      )}
-    </div>
-  );
+    </section>
+);
 }
+
 
 export default Form;

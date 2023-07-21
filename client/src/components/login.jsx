@@ -35,56 +35,23 @@ function Login () {
 
     return (
         <section>
-        <div className="form">
-            <div>
-                <div  >
-                    <h1 class="headerOne">Sentinetic</h1>
-                </div>
-                <div>
-                    <div className="input-form-header">
-                    <h3>Login</h3>
-                    </div>
-
-                    <div className="input-form-content" class="d-flex justify-content-center">
-                        <form>
-                            <div id="input" className="input-group mb-3">
-                                <input 
-                                    value={email} 
-                                    onChange={(e) => setEmail(e.target.value)} 
-                                    type="email" 
-                                    className="form-control" 
-                                    placeholder="Email" 
-                                    aria-label="Email" 
-                                    aria-describedby="basic-addon2" 
-                                    id="email" name="email"
-                                />
-                            </div>
-                            <div id="input" className="input-group mb-3">
-                                <input 
-                                    value={password}   
-                                    onChange={(e) => setPassword(e.target.value)} 
-                                    type="password" 
-                                    placeholder="Password" 
-                                    aria-label="Password" 
-                                    aria-describedby="basic-addon2"
-                                    id="password" 
-                                    name="password"/>
-
-                            </div>
-                            <div className="input-group-append" class="d-flex justify-content-center">
-                                    <button 
-                                        className="btn btn-outline-danger"
-                                        type ="submit" 
-                                        onSubmit={handleSubmit}
-                                    >
-                                        Log In
-                                    </button>
-                            </div>    
-                            <div class="text-center">
-                                <button className="btn btn-sm btn-block btn-danger" onClick={Register}>Register here if you do not have an account </button>
-                            </div>
-                        </form>
-                    </div>
+        <div class="login-form">
+            <div class="container">
+                <div class="login-container">
+                    <h2>Login</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" class="form-control" id="email"placeholder="email@example.com"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" class="form-control" id="password" placeholder="Enter your password"/>
+                        </div>
+                        <button type="submit" class="btn btn-danger btn-block" onClick={handleSubmit}>Login</button>
+                    
+                    </form>
+                    <p> Need to register? <button class="btn btn-outline-danger">Click here</button></p>
                 </div>
             </div>
         </div>
