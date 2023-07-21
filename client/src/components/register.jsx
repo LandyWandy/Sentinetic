@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
 import { REGISTER_USER } from '../utils/mutations';
+import '../css/register.css'
 
-function Form() {
+function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate(); // Add useNavigate hook
 
   const [registerUser, { loading, error }] = useMutation(REGISTER_USER, {
     onCompleted: (data) => {
-      // Handle the response data after a successful registration
       console.log(data);
-      // Reset the form fields
       setEmail('');
       setPassword('');
+      navigate('/login'); // Navigate to login page
     },
     onError: (error) => {
-      // Handle any errors that occur during registration
       console.error('Error registering user:', error);
       setErrorMessage('Error registering user. Please try again.');
     },
@@ -48,38 +49,27 @@ function Form() {
   };
 
   return (
-    <div>
-      <form className="form" onSubmit={handleFormSubmit}>
-        <input
-          value={email}
-          name="email"
-          onChange={handleInputChange}
-          type="email"
-          placeholder="Email"
-        />
-        <input
-          value={password}
-          name="password"
-          onChange={handleInputChange}
-          type="password"
-          placeholder="Password"
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? 'Loading...' : 'Submit'}
-        </button>
-      </form>
-      {errorMessage && (
-        <div>
-          <p className="error-text">{errorMessage}</p>
+    <section>
+    <div class="container">
+        <div class="register-container">
+            <h2>Register</h2>
+            <form onSubmit={handleFormSubmit}>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input value={email} onChange={handleInputChange} type="email" name="email" class="form-control" id="username" placeholder="Enter a valid email"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input value={password} onChange={handleInputChange} type="password" name="password" class="form-control" id="password" placeholder="Enter a strong password"/>
+                </div>
+                <button type="submit" class="btn btn-danger btn-block">{loading ? 'Loading...' : 'Submit'}</button>
+                
+            </form>
+            <p> Already registered? <button class="btn btn-outline-danger">Login here</button></p>
         </div>
-      )}
-      {error && (
-        <div>
-          <p className="error-text">Error: {error.message}</p>
-        </div>
-      )}
     </div>
+</section>
   );
 }
 
-export default Form;
+export default Register;

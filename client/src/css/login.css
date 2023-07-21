@@ -1,0 +1,77 @@
+.login-form {
+    background-image: url('../images/loginForm.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    aspect-ratio: 17/10;
+    min-height: 0;
+    height: 85vh;
+    width: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.container {
+    display:flex;
+    font-family: 'Kiak';
+    src: url(../fonts/Kiak-Bold.otf);
+  }
+
+ 
+  .login-container {
+    height: 73vh;
+    width: 80vh;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #F1948A ;
+    border-radius: 5px;
+  }
+
+  .login-container h2 {
+    font-size: 60px;
+    
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+  }
+
+  .form-group label {
+    color: white;
+  }
+
+  .form-group input {
+    border-color: white;
+  }
+
+  .register-button {
+    margin-top: 10px;
+  }
+
+p {
+    padding: 20px;
+    text-align: center;
+}
+@media (max-width: 576px) {
+    .form {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .headerOne {
+        font-size: 24px;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+    .input-group-append {
+        justify-content: center;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
