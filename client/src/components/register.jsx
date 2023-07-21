@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { REGISTER_USER } from '../utils/mutations';
+import '../css/register.css'
 
 function Register() {
   const [email, setEmail] = useState('');
