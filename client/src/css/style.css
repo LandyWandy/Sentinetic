@@ -84,7 +84,7 @@ body {
     align-items: center;
 }
 #input{
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -116,7 +116,7 @@ h3{
     display: flex;
     justify-content: center;
 }
-.recent-search:hover{
+.recent-search:hover {
     opacity: 80%;
     transition: 0.5s;
     cursor: pointer;
@@ -186,9 +186,11 @@ h3{
 }
 
 .recharts-responsive-container {
-    width: 1000px !important;
-    height: 1000px !important;
+    width: 500px !important;
+    height: 400px !important;
     display: flex;
+    font-family: 'Kiak';
+    src: url(../fonts/Kiak-Bold.otf);
 }
 
 .recharts-surface {
