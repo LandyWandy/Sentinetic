@@ -1,0 +1,67 @@
+.container {
+  display:flex;
+  font-family: 'Kiak';
+  src: url(../fonts/Kiak-Bold.otf);
+}
+.register-container {
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 30px;
+  background-color: #FDA593 ;
+  border-radius: 5px;
+}
+
+.register-container h2 {
+  font-size: 60px;
+  
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.form-group label {
+  color: white;
+}
+
+.form-group input {
+  border-color: white;
+}
+
+.register-button {
+  margin-top: 10px;
+}
+
+p {
+  text-align:center;
+  padding: 20px;
+}
+
+@media screen and (max-width: 767px) {
+
+
+.container {
+    max-width: 100%;
+    padding: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    font-size: 14px;
+}
+}
+
+
+@media screen and (max-width: 480px) {
+
+
+h2 {
+    font-size: 24px;
+}
+
+button {
+    width: 100%;
+}
+}
