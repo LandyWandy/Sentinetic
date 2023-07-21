@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
 import { REGISTER_USER } from '../utils/mutations';
 
-function Form() {
+function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate(); // Add useNavigate hook
 
   const [registerUser, { loading, error }] = useMutation(REGISTER_USER, {
     onCompleted: (data) => {
-      // Handle the response data after a successful registration
       console.log(data);
-      // Reset the form fields
       setEmail('');
       setPassword('');
+      navigate('/login'); // Navigate to login page
     },
     onError: (error) => {
-      // Handle any errors that occur during registration
       console.error('Error registering user:', error);
       setErrorMessage('Error registering user. Please try again.');
     },
@@ -82,4 +82,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default Register;
