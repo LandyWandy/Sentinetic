@@ -5,9 +5,6 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
-    // validate: {
-    //   // if we get to it
-    // },
   },
   password: {
     type: String,

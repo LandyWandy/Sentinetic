@@ -2,16 +2,9 @@ const { User, Search } = require('../models');
 
 const resolvers = {
   Query: {
-    searchResults: async () => {
-      try {
-        // Retrieve all search documents from the database
-        const searchResults = await Search.find();
-        return searchResults;
-      } catch (error) {
-        console.error('Error fetching search results:', error);
-        throw error;
-      }
-    },
+
+// ------------------------- User Queries -------------------------
+
     user: async (parent, { id }) => {
       try {
         // Retrieve a specific user by ID
@@ -29,6 +22,19 @@ const resolvers = {
         return users;
       } catch (error) {
         console.error('Error fetching users:', error);
+        throw error;
+      }
+    },
+
+// ------------------------- Search Queries -------------------------
+
+    searchResults: async () => {
+      try {
+        // Retrieve all search documents from the database
+        const searchResults = await Search.find();
+        return searchResults;
+      } catch (error) {
+        console.error('Error fetching search results:', error);
         throw error;
       }
     },
