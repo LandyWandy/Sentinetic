@@ -1,6 +1,7 @@
 import Tweet from "./tweet";
 import { useState, useEffect } from 'react';
 import '../css/style.css';
+import Example from './pieChart';
 
 function Main() {
     const [userInput, setUserInput] = useState('');
@@ -92,6 +93,9 @@ function Main() {
 
                     <div className="grid-item-column right bg-light">
                         <h3>Render Data</h3>
+                        <div className="pie-chart">
+                            <Example />
+                        </div>
                     </div>
 
                     <div className="bg-light relevant-tweets-container">
