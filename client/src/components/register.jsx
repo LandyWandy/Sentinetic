@@ -48,37 +48,26 @@ function Register() {
   };
 
   return (
-    <div>
-      <form className="form" onSubmit={handleFormSubmit}>
-        <input
-          value={email}
-          name="email"
-          onChange={handleInputChange}
-          type="email"
-          placeholder="Email"
-        />
-        <input
-          value={password}
-          name="password"
-          onChange={handleInputChange}
-          type="password"
-          placeholder="Password"
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? 'Loading...' : 'Submit'}
-        </button>
-      </form>
-      {errorMessage && (
-        <div>
-          <p className="error-text">{errorMessage}</p>
+    <section>
+    <div class="container">
+        <div class="register-container">
+            <h2>Register</h2>
+            <form onSubmit={handleFormSubmit}>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input value={email} onChange={handleInputChange} type="email" class="form-control" id="username" placeholder="Enter a valid email"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input value={password} onChange={handleInputChange} type="password" class="form-control" id="password" placeholder="Enter a strong password"/>
+                </div>
+                <button type="submit" class="btn btn-danger btn-block">{loading ? 'Loading...' : 'Submit'}</button>
+                
+            </form>
+            <p> Already registered? <button class="btn btn-outline-danger">Login here</button></p>
         </div>
-      )}
-      {error && (
-        <div>
-          <p className="error-text">Error: {error.message}</p>
-        </div>
-      )}
     </div>
+</section>
   );
 }
 
