@@ -25,6 +25,8 @@
     "concurrently": "^8.2.0"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.17"
+    "@apollo/client": "^3.7.17",
+    "bcrypt": "^5.1.0",
+    "jsonwebtoken": "^9.0.1"
   }
 }

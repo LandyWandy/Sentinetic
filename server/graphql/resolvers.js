@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const { User, Search } = require('../models');
 
 const resolvers = {
@@ -50,6 +52,25 @@ const resolvers = {
         return user;
       } catch (error) {
         console.error('Error registering user:', error);
+        throw error;
+      }
+    },
+    loginUser: async (parent, { email, password }) => {
+      try {
+        const user = await User.findOne({ email });
+        if (!user) {
+          throw new Error('Invalid credentials');
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+          throw new Error('Invalid credentials');
+        }
+
+        const token = jwt.sign({ _id: user._id }, 'your_secret_key', { expiresIn: '2h' });
+        return { token, user };
+      } catch (error) {
+        console.error('Error logging in:', error);
         throw error;
       }
     },

@@ -1,37 +1,46 @@
-import React, {useState} from "react";
-import Register from './register'
-// import '../css/style.css';
-// import Main from "./main";
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
 import '../css/login.css';
 
-// import { checkPassword, validateEmail } from '../utils/helpers';
+function Login({ onLogin, isLoggedIn }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loginUser, { loading }] = useMutation(LOGIN_USER);
+  const navigate = useNavigate();
 
-function Login () {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
 
-  
-    const [currentPage, setCurrentPage] = useState('');
-  
-    // This method is checking to see what the value of `currentPage` is. Depending on the value of currentPage, we return the corresponding component to render.
-    // const renderPage = () => {
-    //   if (currentPage === 'Main') {
-    //     return <Main />;
-    //   }
-    //   if (currentPage === 'Register') {
-    //     return <Register />;
-    //   }
-      
-    // };
-  
-    const handlePageChange = (page) => setCurrentPage(page);
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(email);
-        handlePageChange("Main");
+    if (!email || !password) {
+      setErrorMessage('Please fill in all fields');
+      return;
     }
+
+    try {
+      const { data } = await loginUser({
+        variables: { email, password },
+      });
+
+      const token = data.loginUser.token;
+      onLogin(token);
+
+      setEmail('');
+      setPassword('');
+      setErrorMessage('');
+    } catch (error) {
+      console.error('Error logging in:', error);
+      setErrorMessage('Invalid credentials. Please try again.');
+    }
+  };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/main');
+    }
+  }, [isLoggedIn, navigate]);
 
     return (
         <section>
@@ -56,9 +65,7 @@ function Login () {
             </div>
         </div>
     </section>
-    )
+  )
 }
 
-
-
-  export default Login;
+export default Login;
