@@ -44,64 +44,31 @@ function Login({ onLogin, isLoggedIn }) {
 
   return (
     <section>
-      <div className="form">
-        <div>
-          <div>
-            <h1 className="headerOne">Sentinetic</h1>
-          </div>
-          <div>
-            <div className="input-form-header">
-              <h3>Login</h3>
+        <div class="login-form">
+            <div class="container">
+                <div class="login-container">
+                    <h2>Login</h2>
+                    <form onSubmit={handleFormSubmit}>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" class="form-control" id="email"placeholder="email@example.com"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" class="form-control" id="password" placeholder="Enter your password"/>
+                        </div>
+                        <button type="submit" class="btn btn-danger btn-block" disabled={loading}>{loading ? 'Loading...' : 'Log In'}</button>
+                    
+                    </form>
+                    <p> Need to register? <Link to="/register" class="btn btn-outline-danger">Click here </Link></p>
+                </div>
             </div>
-            <div className="input-form-content d-flex justify-content-center">
-              <form onSubmit={handleFormSubmit}>
-                <div id="input" className="input-group mb-3">
-                  <input 
-                    value={email} 
-                    onChange={(e) => setEmail(e.target.value)} 
-                    type="email" 
-                    className="form-control" 
-                    placeholder="Email" 
-                    aria-label="Email" 
-                    aria-describedby="basic-addon2" 
-                    id="email" 
-                    name="email"
-                  />
-                </div>
-                <div id="input" className="input-group mb-3">
-                  <input 
-                    value={password}   
-                    onChange={(e) => setPassword(e.target.value)} 
-                    type="password" 
-                    placeholder="Password" 
-                    aria-label="Password" 
-                    aria-describedby="basic-addon2"
-                    id="password" 
-                    name="password"
-                  />
-                </div>
-                <div className="input-group-append d-flex justify-content-center">
-                  <button 
-                    className="btn btn-outline-danger"
-                    type ="submit" 
-                    disabled={loading}
-                  >
-                    {loading ? 'Loading...' : 'Log In'}
-                  </button>
-                </div>    
-                <div className="text-center">
-                  <Link to="/register" className="btn btn-sm btn-block btn-danger">Register here if you do not have an account </Link>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        {errorMessage && (
+            {errorMessage && (
           <div>
             <p className="error-text">{errorMessage}</p>
           </div>
         )}
-      </div>
+        </div>
     </section>
   )
 }
