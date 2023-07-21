@@ -18,13 +18,24 @@ const typeDefs = gql`
     negative: Int
   }
 
-  
+  type Tweet {
+    text: String
+    createdAt: String
+    likes: Int
+    retweets: Int
+    comments: Int
+  }
 
   type Query {
     searchResults: [Search]
     user(id: ID!): User
     users: [User]
   }
+
+  type Mutation {
+    registerUser(email: String!, password: String!): User
+  }
+  
 `;
 
 module.exports = typeDefs;
