@@ -9,10 +9,9 @@ export const REGISTER_USER = gql`
       searches {
         _id
         searchTerm
-        createdAt
         positive
-        neutral
         negative
+        neutral
       }
     }
   }
@@ -34,6 +33,25 @@ export const LOGIN_USER = gql`
           negative
         }
       }
+    }
+  }
+`;
+
+export const ADD_SEARCH = gql`
+  mutation AddSearch($searchTerm: String!) {
+    addSearch(searchTerm: $searchTerm) {
+      _id
+      searchTerm
+      tweets {
+        text
+        createdAt
+        likes
+        retweets
+        comments
+      }
+      positive
+      negative
+      neutral
     }
   }
 `;

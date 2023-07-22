@@ -1,22 +1,32 @@
+// require('dotenv').config();
 import Tweet from "./tweet";
 import { useState, useEffect } from 'react';
 import '../css/style.css';
+import { useMutation } from '@apollo/client';
 import Example from './pieChart';
+import { ADD_SEARCH } from "../utils/mutations";
 
 function Main() {
     const [userInput, setUserInput] = useState('');
     const [recentSearches, setRecentSearches] = useState([]);
+    const [addSearch] = useMutation(ADD_SEARCH);
 
     const handleInput = (e) => {
         setUserInput(e.target.value);
     }
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
         if (userInput.trim() === '') return; 
 
-        // # check
+        // check
         const formattedInput = userInput.startsWith('#') ? userInput : `#${userInput}`;
+
+        // Here, we call the addSearch mutation
+        const { data } = await addSearch({ variables: { searchTerm: formattedInput } });
+
+        // Handle the returned data as needed...
+        console.log(data.addSearch);
 
         // save toi lcoal stoaraygae
         const newRecentSearches = [formattedInput, ...recentSearches];
