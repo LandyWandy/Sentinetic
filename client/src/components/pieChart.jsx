@@ -1,12 +1,6 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
 
-const data = [
-  { name: 'Positive', value: 400, fill: '#F1948A ' },
-  { name: 'Negative', value: 300, fill: '#E74C3C ' },
-  { name: 'Neutral', value: 300, fill: 'salmon' }
-];
-
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
   const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
@@ -54,7 +48,7 @@ const renderActiveShape = (props) => {
   );
 };
 
-export default class Example extends PureComponent {
+export default class Stats extends PureComponent {
   static demoUrl = 'https://codesandbox.io/s/pie-chart-with-customized-active-shape-y93si';
 
   state = {
@@ -68,13 +62,19 @@ export default class Example extends PureComponent {
   };
 
   render() {
+    const pieData = [
+      { name: 'Positive', value: this.props.positive, fill: '#F1948A ' },
+      { name: 'Negative', value: this.props.negative, fill: '#E74C3C ' },
+      { name: 'Neutral', value: this.props.neutral, fill: 'salmon' }
+    ];
+
     return (
       <ResponsiveContainer width="100%" height="100%">
         <PieChart width={400} height={400}>
           <Pie
             activeIndex={this.state.activeIndex}
             activeShape={renderActiveShape}
-            data={data}
+            data={pieData}
             cx="50%"
             cy="50%"
             innerRadius={60}

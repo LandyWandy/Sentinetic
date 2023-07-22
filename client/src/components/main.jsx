@@ -3,13 +3,14 @@ import Tweet from "./tweet";
 import { useState, useEffect } from 'react';
 import '../css/style.css';
 import { useMutation } from '@apollo/client';
-import Example from './pieChart';
+import Stats from './pieChart';
 import { ADD_SEARCH } from "../utils/mutations";
 
 function Main() {
     const [userInput, setUserInput] = useState('');
     const [recentSearches, setRecentSearches] = useState([]);
     const [addSearch] = useMutation(ADD_SEARCH);
+    const [searchData, setSearchData] = useState({});
 
     const handleInput = (e) => {
         setUserInput(e.target.value);
@@ -25,8 +26,10 @@ function Main() {
         // Here, we call the addSearch mutation
         const { data } = await addSearch({ variables: { searchTerm: formattedInput } });
 
-        // Handle the returned data as needed...
-        console.log(data.addSearch);
+        // // Handle the returned data as needed...
+        
+        setSearchData(data.addSearch)
+        // console.log(searchData);
 
         // save toi lcoal stoaraygae
         const newRecentSearches = [formattedInput, ...recentSearches];
@@ -104,7 +107,7 @@ function Main() {
                     <div className="grid-item-column right bg-light">
                         <h3>Render Data</h3>
                         <div className="pie-chart">
-                            <Example />
+                            <Stats positive={searchData.positive} negative={searchData.negative} neutral={searchData.neutral}/>
                         </div>
                     </div>
 

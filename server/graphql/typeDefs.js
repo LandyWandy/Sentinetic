@@ -30,6 +30,7 @@ const typeDefs = gql`
     searchResults: [Search]
     user(id: ID!): User
     users: [User]
+    searchesByTerm(searchTerm: String!): [Search]
   }
 
   type Mutation {
