@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { REGISTER_USER } from '../utils/mutations';
 import '../css/register.css'
 
-function Register() {
+function Register({ onLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -42,9 +42,16 @@ function Register() {
       setErrorMessage('Please fill in all fields');
       return;
     }
-
     registerUser({
       variables: { email, password },
+    })
+    .then(() => {
+      // This will run if the mutation completed successfully
+      navigate('/login');
+    })
+    .catch((error) => {
+      console.error('Error registering user:', error);
+      setErrorMessage('Error registering user. Please try again.');
     });
   };
 

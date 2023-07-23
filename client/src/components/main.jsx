@@ -1,22 +1,38 @@
+// require('dotenv').config();
 import Tweet from "./tweet";
 import { useState, useEffect } from 'react';
 import '../css/style.css';
-import Example from './pieChart';
+import { useMutation } from '@apollo/client';
+import Stats from './pieChart';
+import { ADD_SEARCH } from "../utils/mutations";
 
 function Main() {
     const [userInput, setUserInput] = useState('');
     const [recentSearches, setRecentSearches] = useState([]);
+    const [addSearch] = useMutation(ADD_SEARCH);
+    const [searchData, setSearchData] = useState({});
 
     const handleInput = (e) => {
         setUserInput(e.target.value);
     }
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
         if (userInput.trim() === '') return; 
 
-        // # check
+        // check
         const formattedInput = userInput.startsWith('#') ? userInput : `#${userInput}`;
+
+        // Here, we call the addSearch mutation
+        const { data } = await addSearch({ variables: { searchTerm: formattedInput } });
+
+        // // Handle the returned data as needed...
+        
+        setSearchData(data.addSearch)
+        const mostLikedTweet = data.addSearch.tweets.reduce((prev, current) => (prev.likes > current.likes) ? prev : current);
+        setSearchData({ ...data.addSearch, mostLikedTweet: mostLikedTweet });
+    
+        // console.log(searchData.tweets);
 
         // save toi lcoal stoaraygae
         const newRecentSearches = [formattedInput, ...recentSearches];
@@ -94,13 +110,13 @@ function Main() {
                     <div className="grid-item-column right bg-light">
                         <h3>Render Data</h3>
                         <div className="pie-chart">
-                            <Example />
+                            <Stats positive={searchData.positive} negative={searchData.negative} neutral={searchData.neutral}/>
                         </div>
                     </div>
 
                     <div className="bg-light relevant-tweets-container">
                         <i className='fa-sharp fa-solid fa-angle-left fa-beat fa-2xl icon' />
-                            <Tweet />
+                            <Tweet tweet={searchData.mostLikedTweet} />
                         <i className='fa-sharp fa-solid fa-angle-right fa-beat fa-2xl icon' />
                     </div>
 

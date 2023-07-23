@@ -1,19 +1,21 @@
 import '../css/style.css';
-import pfp from '../images/BlankPFP.jpeg' 
+import pfp from '../images/BlankPFP.jpeg';
 
-function Tweet() {
-   return(
+function Tweet({ tweet }) {
+    if (!tweet) {
+        return <div></div>; // replace this with a loading spinner or any loading UI
+    }
+   return (
     <div className='tweet'>
         <Avatar />
         <div className='content'>
-            <NameWithHandle /><Time />
-            <Message />
+            <NameWithHandle /><Time createdAt={tweet.createdAt}/>
+            <Message text={tweet.text}/>
             <div className='buttons'>
-                <CommentButton /> 
-                <LikeButton />
-                <RetweetButton />
+                <CommentButton comments={tweet.comments}/> 
+                <LikeButton likes={tweet.likes}/>
+                <RetweetButton retweets={tweet.retweets}/>
                 <ShareButton />
-                
             </div>
         </div>
     </div>
@@ -30,10 +32,10 @@ function Avatar() {
     )
 }
 
-function Message() {
+function Message({ text }) {
     return(
         <div className='message'>
-            OpenAI's language models rock!
+            {text}
         </div>
     )
 }
@@ -47,18 +49,26 @@ function NameWithHandle() {
     )
 }
 
-const Time = () => (
-    <span className='time'>6/30/23</span>
-)
+function Time({ createdAt }) {
+    const date = new Date(createdAt);
+    const formattedDate = date.toLocaleDateString(); // default formatting
+    return <span className='time'>{formattedDate}</span>;
+}
 
-const LikeButton = () => (
-    <i className='fa fa-heart like-button'/>
+const LikeButton = ({ likes }) => (
+    <span>
+    {likes} <i className='fa fa-heart like-button'/> 
+    </span>
 );
-const CommentButton = () => (
-    <i className='far fa-comment'/>
+const CommentButton = ({ comments }) => (
+    <span>
+    {comments} <i className='far fa-comment'/>
+    </span>
 );
-const RetweetButton = () => (
-    <i className='fa fa-retweet retweet-button'/>
+const RetweetButton = ({ retweets }) => (
+    <span>
+    {retweets} <i className='fa fa-retweet retweet-button'/>
+    </span>
 );
 const ShareButton = () => (
     <i className='fas fa-external-link-alt'/>

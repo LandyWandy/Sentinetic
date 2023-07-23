@@ -6,7 +6,7 @@ const tweetSchema = new Schema({
     required: true,
   },
   createdAt: {
-    type: Date,
+    type: String,
     required: true,
   },
   likes: {
@@ -24,4 +24,4 @@ const tweetSchema = new Schema({
 
 const Tweet = model('Tweet', tweetSchema);
 
-module.exports = Tweet;
+module.exports = tweetSchema;

@@ -14,8 +14,8 @@ const typeDefs = gql`
     createdAt: String
     tweets: [Tweet]
     positive: Int
-    neutral: Int
     negative: Int
+    neutral: Int
   }
 
   type Tweet {
@@ -30,11 +30,13 @@ const typeDefs = gql`
     searchResults: [Search]
     user(id: ID!): User
     users: [User]
+    searchesByTerm(searchTerm: String!): [Search]
   }
 
   type Mutation {
     registerUser(email: String!, password: String!): User
     loginUser(email: String!, password: String!): AuthData
+    addSearch(searchTerm: String!): Search
   }
   
   type AuthData {

@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const tweetSchema = require('./Tweet');
 
 const searchSchema = new Schema({
   searchTerm: {
@@ -11,21 +12,16 @@ const searchSchema = new Schema({
     default: Date.now,
     required: true,
   },
-  tweets: [
-    { type: Schema.Types.ObjectId, ref: 'Tweets'}
-  ],
-  totalImpressions: {
-    type: Number,
-  },
+  tweets: [tweetSchema],
   positive: {
     type: Number,
     required: true,
   },
-  neutral: {
+  negative: {
     type: Number,
     required: true,
   },
-  negative: {
+  neutral: {
     type: Number,
     required: true,
   }
