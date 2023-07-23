@@ -13,10 +13,10 @@ const client = new TwitterApi({
   accessSecret: ACCESS_SECRET,
 });
 
-const fetchTweets = async () => {
+const fetchTweetsForAi = async (searchTerm) => {
   try {
     const tweetsResponse = await client.v2.get('tweets/search/recent', {
-      query: '#tuesdayvibe -is:retweet',
+      query: `${searchTerm} -is:retweet`,
       'tweet.fields': 'public_metrics,created_at,lang',
       'expansions': 'author_id',
       'user.fields': 'username',
@@ -32,15 +32,24 @@ const fetchTweets = async () => {
         .replace(/�/g, '') // Remove � symbol
         .replace(/\+/g, '') // Remove plus sign
         .replace(/[\u{1F600}-\u{1F6FF}]/gu, ''); // Remove emojis
-    
-      return modifiedText;
-    });
 
-    return formattedTweets;
+      return {
+        text: modifiedText,
+        createdAt: tweet.created_at,
+        likes: tweet.public_metrics.like_count,
+        retweets: tweet.public_metrics.retweet_count,
+        comments: tweet.public_metrics.reply_count
+      };
+    });
+    
+    return {
+      searchTerm: searchTerm,
+      tweets: formattedTweets,
+    };
   } catch (error) {
     console.error(error);
     return [];
   }
 };
 
-module.exports = fetchTweets;
+module.exports = fetchTweetsForAi;

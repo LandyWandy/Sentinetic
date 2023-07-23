@@ -17,17 +17,16 @@ const authMiddleware = function ({ req }) {
   }
 
   if (!token) {
-    return req; 
+    return { user: null }; 
   }
 
   try {
     const { data } = jwt.verify(token, secret, { maxAge: expiration });
-    req.user = data;
+    return { user: data }; // include the user in the returned object
   } catch {
     console.log('Invalid token');
+    return { user: null };
   }
-
-  return req;
 };
 
 module.exports = { authMiddleware, signToken };
