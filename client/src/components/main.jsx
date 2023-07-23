@@ -29,7 +29,10 @@ function Main() {
         // // Handle the returned data as needed...
         
         setSearchData(data.addSearch)
-        // console.log(searchData);
+        const mostLikedTweet = data.addSearch.tweets.reduce((prev, current) => (prev.likes > current.likes) ? prev : current);
+        setSearchData({ ...data.addSearch, mostLikedTweet: mostLikedTweet });
+    
+        // console.log(searchData.tweets);
 
         // save toi lcoal stoaraygae
         const newRecentSearches = [formattedInput, ...recentSearches];
@@ -113,7 +116,7 @@ function Main() {
 
                     <div className="bg-light relevant-tweets-container">
                         <i className='fa-sharp fa-solid fa-angle-left fa-beat fa-2xl icon' />
-                            <Tweet />
+                            <Tweet tweet={searchData.mostLikedTweet} />
                         <i className='fa-sharp fa-solid fa-angle-right fa-beat fa-2xl icon' />
                     </div>
 
