@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link, useNavigate } from 'react-router-dom';
 import { REGISTER_USER } from '../utils/mutations';
+import logo from "../images/sentinetic-logo-invert.svg"
 import '../css/register.css'
 
 function Register({ onLogin }) {
@@ -59,7 +60,9 @@ function Register({ onLogin }) {
     <section>
     <div className="container">
         <div className="register-container">
-            <h2>Register</h2>
+        <div className="header-wrapper1 container justify-content-center align-items-center">
+                  <img src={logo} alt="sentinetic-logo" className="mb-2"/><h2 className="mx-2 m-2">Register</h2>
+                </div>
             <form onSubmit={handleFormSubmit}>
                 <div className="form-group">
                     <label for="email">Email:</label>

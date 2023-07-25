@@ -6,6 +6,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import Stats from './pieChart';
 import { ADD_SEARCH } from "../utils/mutations";
 import { GET_SEARCH } from "../utils/queries";
+import logo from "../images/sentinetic-logo.svg"
 
 function Main({onLogout}) {
     const [userInput, setUserInput] = useState('');
@@ -89,7 +90,7 @@ function Main({onLogout}) {
                     <div className="chart-container">
         
                         <div id="toprow" className="bg-light justify-content-center alight-items-center">
-                            <h1 className="text-center mt-3">sentinetic</h1>
+                            <img src={logo} alt="sentinetic-logo" className="mt-2"/><h1 className="text-center mt-3 mx-3">sentinetic</h1>
                         </div>
             
                         <div id="columnleft" className="bg-light">

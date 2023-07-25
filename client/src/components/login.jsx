@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+import logo from "../images/sentinetic-logo-invert.svg"
 import '../css/login.css';
 
 function Login({ onLogin, isLoggedIn }) {
@@ -47,7 +48,9 @@ function Login({ onLogin, isLoggedIn }) {
         <div class="login-form">
             <div class="container">
                 <div class="login-container">
-                    <h2>Login</h2>
+                <div className="header-wrapper container justify-content-center align-items-center">
+                  <img src={logo} alt="sentinetic-logo" className="mb-1"/><h2 className="mx-2 m-2">Login</h2>
+                </div>
                     <form onSubmit={handleFormSubmit}>
                         <div class="form-group">
                             <label for="email">Email:</label>

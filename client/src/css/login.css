@@ -12,6 +12,7 @@
     align-items: center;
   }
 
+
 .container {
     display:flex;
     font-family: 'Kiak';
@@ -27,16 +28,27 @@
     padding: 30px;
     background-color: #F1948A ;
     border-radius: 5px;
+    
   }
 
   .login-container h2 {
     font-size: 60px;
-    
     text-align: center;
     margin-bottom: 20px;
     color: white;
   }
-
+  .header-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center
+  }
+  .header-wrapper h2{
+    margin-right: 25%;
+  }
+.header-wrapper img{
+    width: 10%;
+    height: auto;
+}
   .form-group label {
     color: white;
   }
