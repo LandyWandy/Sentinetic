@@ -7,7 +7,7 @@ import { useMutation, useLazyQuery, ApolloClient, InMemoryCache, ApolloProvider,
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: 'https://sentinetic-987fae0a7fa7.herokuapp.com/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
