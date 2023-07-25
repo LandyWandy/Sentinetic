@@ -1,11 +1,21 @@
 import { gql } from '@apollo/client';
 
-export const SEARCHES_BY_TERM_QUERY = gql`
-  query SearchesByTerm($searchTerm: String!) {
-    searchesByTerm(searchTerm: $searchTerm) {
+export const GET_SEARCH = gql`
+  query GetSearch($searchTerm: String!) {
+    getSearch(searchTerm: $searchTerm) {
+      _id
+      searchTerm
+      tweets {
+        text
+        createdAt
+        likes
+        retweets
+        comments
+      }
       positive
       negative
       neutral
     }
   }
 `;
+

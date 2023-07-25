@@ -56,30 +56,13 @@ const resolvers = {
     },
 
 
-  searchesByTerm: async (parent, { searchTerm }, context) => {
+    getSearch: async (parent, { searchTerm }) => {
       try {
-        if (!context.user) {
-          throw new Error('Authentication required');
-        }
-
-        // Retrieve a specific user by ID from context
-        const user = await User.findById(context.user._id).populate({
-          path: 'searches',
-          populate: {
-            path: 'tweets'
-          }
-        });
-        
-        if (!user) {
-          throw new Error('User not found');
-        }
-        
-        // Filter the user's searches by the searchTerm
-        const matchingSearches = user.searches.filter(search => search.searchTerm === searchTerm);
-
-        return matchingSearches;
+        // Retrieve a specific search document by searchTerm
+        const search = await Search.findOne({ searchTerm }).populate('tweets');
+        return search;
       } catch (error) {
-        console.error('Error fetching searches by term:', error);
+        console.error('Error fetching search:', error);
         throw error;
       }
     },
