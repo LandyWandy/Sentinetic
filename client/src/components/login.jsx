@@ -60,7 +60,7 @@ function Login({ onLogin, isLoggedIn }) {
                         <button type="submit" class="btn btn-danger btn-block" disabled={loading}>{loading ? 'Loading...' : 'Log In'}</button>
                     
                     </form>
-                    <p> Need to register?<Link to="/register" class="btn btn-outline-danger" >Click here </Link></p>
+                    <p> Need to register? <Link to="/register" class="btn btn-outline-danger" >Click here </Link></p>
                 </div>
             </div>
             {errorMessage && (

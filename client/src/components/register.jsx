@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { REGISTER_USER } from '../utils/mutations';
 import '../css/register.css'
 
@@ -57,22 +57,22 @@ function Register({ onLogin }) {
 
   return (
     <section>
-    <div class="container">
-        <div class="register-container">
+    <div className="container">
+        <div className="register-container">
             <h2>Register</h2>
             <form onSubmit={handleFormSubmit}>
-                <div class="form-group">
+                <div className="form-group">
                     <label for="email">Email:</label>
                     <input value={email} onChange={handleInputChange} type="email" name="email" class="form-control" id="username" placeholder="Enter a valid email"/>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label for="password">Password:</label>
                     <input value={password} onChange={handleInputChange} type="password" name="password" class="form-control" id="password" placeholder="Enter a strong password"/>
                 </div>
-                <button type="submit" class="btn btn-danger btn-block">{loading ? 'Loading...' : 'Submit'}</button>
+                <button type="submit" className="btn btn-danger btn-block">{loading ? 'Loading...' : 'Submit'}</button>
                 
             </form>
-            <p> Already registered? <button class="btn btn-outline-danger">Login here</button></p>
+            <p> Already registered? <Link to="/" class="btn btn-outline-danger" >Login here </Link></p>
         </div>
     </div>
 </section>
