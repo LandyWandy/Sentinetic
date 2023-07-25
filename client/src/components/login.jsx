@@ -9,7 +9,7 @@ function Login({ onLogin, isLoggedIn }) {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [loginUser, { loading }] = useMutation(LOGIN_USER);
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
