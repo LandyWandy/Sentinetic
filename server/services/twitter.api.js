@@ -20,7 +20,7 @@ const fetchTweetsForAi = async (searchTerm) => {
       "tweet.fields": "public_metrics,created_at,lang",
       expansions: "author_id",
       "user.fields": "username",
-      max_results: 50,
+      max_results: 80,
     });
 
     const {
