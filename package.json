@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
-    "start": "node server --ignore client",
+    "start": "cd server && node server.js",
     "develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
@@ -27,6 +27,16 @@
   "dependencies": {
     "@apollo/client": "^3.7.17",
     "bcrypt": "^5.1.0",
-    "jsonwebtoken": "^9.0.1"
+    "jsonwebtoken": "^9.0.1",
+    "apollo-server": "^3.12.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "graphql": "^16.7.1",
+    "mongod": "^2.0.0",
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.4.0",
+    "nodemon": "^3.0.1",
+    "openai": "^3.3.0",
+    "twitter-api-v2": "^1.15.0"
   }
 }
