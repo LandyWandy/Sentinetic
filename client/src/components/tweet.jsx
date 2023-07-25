@@ -53,7 +53,7 @@ function NameWithHandle() {
     return(
         <span className='name-with-handle'>
         <span className='name'>User</span>
-        <span className='name'>@user12345</span>
+        <span className='name'>@username</span>
         </span>
     )
 }

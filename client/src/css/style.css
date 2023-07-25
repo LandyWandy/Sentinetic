@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Kiak';
-    src: url(../fonts/Kiak-Bold.otf);
+    src: url(../fonts/modern_sans_serif_7.ttf);
 }
 body {
     margin: 0;
@@ -16,7 +16,7 @@ body {
     background-position: center;
     z-index: -5;
 }
-.form {
+/* .form {
     background-image: url('../images/Form.svg');
     background-repeat: no-repeat;
     background-position: center;
@@ -28,40 +28,96 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.grid-container {
-    height: 90%;
-    width: 62.5%;
-    background-color: rgb(255, 255, 255);
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* One column, full width for the top child */
-    grid-template-rows: 12.5% 1fr 25%; /* Auto height for the top child, and the rest split in halves */
-    gap: 5px;
-}
-.grid-item-row{
-    grid-column: 1 / -1; /* Span full width (from the first column to the last) */
+} */
+.logout-btn {
+    position: fixed;
+    top: 20px; /* Adjust the top value to control the vertical position */
+    left: 27.5px; /* Adjust the left value to control the horizontal position */
+    z-index: 9999; /* Set a high z-index to ensure the button appears above other elements */
+    max-width: 75px;
+  }
+/* SVG / Background Start */
+
+.svg-container{
+    position: fixed;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
 }
-.grid-item-row h1{
-    font-family: 'Kiak';
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+svg{
+    z-index: 1;
+    width: auto;
+    height: 95%;
+
 }
-.grid-item-column{
-    padding: 10px;
+.center-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.left{
-    max-width: 100%;
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 90%;
+    width: 50%;
+    margin-bottom: 50px;
 }
-.right{
-    max-width: 100%;
+
+/* SVG / Background End */
+
+/* Grid / Content Start */
+
+.chart-container{
+    margin-top: 5%;
+    position: relative;
+    z-index: 2;
+    height: 97.5%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: .25fr 1fr .35fr;
+    grid-template-areas:
+    "toprow toprow"
+    "columnleft columnright"
+    "bottomrow bottomrow";
+    grid-gap: 0.5rem;
+}
+#toprow{
+  grid-area: toprow;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+#toprow h1{
+    font-size: 65px;
+    text-align: center;
+}
+
+/* SEARCH CONTAINER SECTION START */
+#columnright h3{
+    font-family: 'Kiak';
+    font-size: 30px;
+}
+h1{
+    font-family: 'Kiak';
+    font-size: xx-large;
+    font-weight: 500;
+}
+#columnleft{
+  grid-area: columnleft;
+  
 }
 .input-form-header{
     height: 10%;
@@ -71,7 +127,6 @@ body {
     text-align: center;
 }
 .input-form-content{
-    padding-top: 5%;
     display: flex;
     justify-content: center;
     height: 20%;
@@ -83,44 +138,89 @@ body {
     align-items: center;
 }
 #input{
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: center;
 }
-h3{
-    font-family: 'Kiak';
+.recent-searches-wrapper{
+    display: flex;
+    justify-content: center;
+    height: 50%;
+    width: 100%;
 }
 .recent-searches-container {
-    background-color: whitesmoke;
-    grid-column: 1 / -1 ; /* Span full width (from the first column to the last) */
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr ; /* One column, full width for the top child */
-    grid-template-rows:  1fr 1fr 1fr 1fr ; /* Auto height for the top child, and the rest split in halves */
-    justify-content: center;
-    text-align: center;
-    padding: 1% 5% 1% 5%;
-    min-height: 72.5%;
-    max-height: 72.5%;
-    max-width: 100%;
+    height: fit-content;
+    width: 90%; /* Set the width to 90% */
+    max-height: 90%;
+    display: flex; /* Add this to use flexbox */
+    flex-direction: column; /* Stack the items vertically */
+    justify-content: flex-start; /* Align items to start from the top */
+    align-items: center; /* Center the items horizontally */
 }
-.recent-search{
+
+.recent-search {
     background-color: #645858;
     color: white;
-    border-radius: 50px;
+    border-radius: 5px;
     padding: 7.5px;
-    margin: 10px;
-    font-size: x-small;
-    min-width: 80%;
-    max-width: 80%;
-    display: flex;
-    justify-content: center;
+    margin: 0.5%; /* Adjust the margin to create spacing between the items */
+    font-size: small;
+    width: 70%; /* Set the width to 90% */
+ 
+    text-align: center;
 }
 .recent-search:hover {
     opacity: 80%;
     transition: 0.5s;
     cursor: pointer;
 }
+.clear-btn-wrapper{
+    margin-top: 2.75%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.clear-btn{
+    width: 70%;
+    height: 7.5%;
+}
+/* SEARCH CONTAINER SECTION END */
 
+/* PIE CHART SECTION START */
+#columnright{
+  grid-area: columnright;
+}
+.pie-chart-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 7.5%;
+}
+.recharts-responsive-container {
+    width: 450px !important;
+    height: 400px !important;
+    display: flex;
+    font-family: 'Kiak';
+    src: url(../fonts/Kiak-Bold.otf);
+}
+
+.recharts-surface {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+
+}
+/* PIE CHART SECTION END */
+
+/* TWEET SECTION START */
+#bottomrow{
+    grid-area: bottomrow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 .relevant-tweets-container{
     width: auto;
     grid-column: 1 / -1; /* Span full width (from the first column to the last) */
@@ -186,23 +286,66 @@ h3{
 }
 .icon:hover{
     cursor: pointer;
+}
+.spacer{
+    height: 100px;
+}
+/* TWEET SECTION END */
 
+
+
+/* MEDIA QUERIES START */
+
+@media only screen and (max-height:850px){
+    .svg-container{
+        height: 105%;
+        width: 200%;
+    }
+}
+@media only screen and (max-height:800px){
+    .svg-container{
+        height: 120%;
+        width: 200%;
+    }
+}
+@media only screen and (max-height:750px){
+    .svg-container{
+        height: 150%;
+        width: 200%;
+    }
+}
+@media only screen and (max-width:1550px){
+    .wrapper{
+        height: 90%;
+        width: 60%;
+    }
+}
+@media only screen and (max-width:1250px){
+    .wrapper{
+        width: 70%;
+    }
+}
+@media only screen and (max-width:1050px){
+    .chart-container{
+        width: 90vw;
+        grid-template-columns: 1.8fr;
+        grid-template-rows: .25fr .45fr 1.5fr .5fr;
+        grid-template-areas:
+        "toprow"
+        "columnleft" 
+        "columnright"
+        "bottomrow";
+    }
+    svg{
+        height: 100%;
+    }
+    .wrapper{
+        height: 97.5%;
+        width: 87.5%;
+    }
+    .recent-searches-container{
+        min-height: 150px;
+    }
 }
 
-.recharts-responsive-container {
-    width: 500px !important;
-    height: 400px !important;
-    display: flex;
-    font-family: 'Kiak';
-    src: url(../fonts/Kiak-Bold.otf);
-}
-
-.recharts-surface {
-    display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-
-
-
+/* MEDIA QUERIES END */
