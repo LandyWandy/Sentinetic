@@ -36,6 +36,10 @@ body {
     z-index: 9999; /* Set a high z-index to ensure the button appears above other elements */
     max-width: 75px;
   }
+#toprow img{
+    width: 7.5%;
+    height: auto;
+}
 /* SVG / Background Start */
 
 .svg-container{

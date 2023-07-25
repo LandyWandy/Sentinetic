@@ -12,7 +12,10 @@
   background-color: #FDA593 ;
   border-radius: 5px;
 }
-
+.header-wrapper1 img{
+  width: 12.5%;
+  height: auto;
+}
 .register-container h2 {
   font-size: 60px;
   
