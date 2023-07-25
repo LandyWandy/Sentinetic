@@ -201,7 +201,7 @@ h1{
     height: 400px !important;
     display: flex;
     font-family: 'Kiak';
-    src: url(../fonts/Kiak-Bold.otf);
+    src: url(../fonts/modern_sans_serif_7.ttf);
 }
 
 .recharts-surface {

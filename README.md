@@ -24,10 +24,11 @@ Interactive Visualizations: The app presents the sentiment analysis results in i
 
 User-Friendly Interface: With a clean and intuitive interface, the app ensures a seamless and enjoyable user experience.
 
-![Register](/client/public/assets/Sentinetic.register.png)
-![Login](/client/public/assets/Sentinetic.login.png)
-![Search](/client/public/assets/Sentinetic.search.png)
-![Main](/client/public/assets/Sentinetic.main.png)
+![Register](/client/public/assets/register.png)
+![Login](/client/public/assets/login.png)
+![Main](/client/public/assets/main.png)
+![Search](/client/public/assets/search.png)
+
 
 ## **How to Use**
 
@@ -42,10 +43,16 @@ User-Friendly Interface: With a clean and intuitive interface, the app ensures a
 5. Interact with the visualizations to explore the sentiment breakdown further.
 
 ## **Technology Used**
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Apollo-GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?style=for-the-badge&logo=apollo-graphql)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+- Front End: React, Bootstrap, CSS
 
--Front End: React, Bootstrap, CSS
-
--Backend: GraphQL, Node.js, Express.js, MongoDB, Mongoose ODM, Apollo, JWT
+- Backend: GraphQL, Node.js, Express.js, MongoDB, Mongoose ODM, Apollo, JWT
 
 ## **Collaborators**
 
