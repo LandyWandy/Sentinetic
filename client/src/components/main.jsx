@@ -2,9 +2,10 @@
 import Tweet from "./tweet";
 import { useState, useEffect } from 'react';
 import '../css/style.css';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import Stats from './pieChart';
 import { ADD_SEARCH } from "../utils/mutations";
+import { GET_SEARCH } from "../utils/queries";
 
 function Main() {
     const [userInput, setUserInput] = useState('');
@@ -16,6 +17,18 @@ function Main() {
         setUserInput(e.target.value);
     }
 
+    const { refetch } = useQuery(GET_SEARCH, { skip: true });
+
+    async function handleRecentSearchClick(searchTerm) {
+        const { data } = await refetch({ searchTerm });
+        console.log(data)
+        // Now you can handle the data as you need...
+        setSearchData(data.getSearch);
+        const mostLikedTweet = data.getSearch.tweets.reduce((prev, current) => (prev.likes > current.likes) ? prev : current);
+        setSearchData({ ...data.getSearch, mostLikedTweet: mostLikedTweet });
+    }
+    
+
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         if (userInput.trim() === '') return; 
@@ -26,6 +39,7 @@ function Main() {
         // Here, we call the addSearch mutation
         const { data } = await addSearch({ variables: { searchTerm: formattedInput } });
 
+        console.log(data.addSearch)
         // // Handle the returned data as needed...
         
         setSearchData(data.addSearch)
@@ -71,7 +85,7 @@ function Main() {
 
                         <div className='recent-searches-container'>
                         {recentSearches.map((search, index) => (
-                            <div key={index} className='recent-search'>
+                            <div key={index} className='recent-search' onClick={() => handleRecentSearchClick(search)}>
                                 {search}
                             </div>
                         ))}
