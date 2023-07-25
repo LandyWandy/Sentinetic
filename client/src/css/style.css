@@ -22,7 +22,7 @@ body {
     background-position: center;
     aspect-ratio: 17/10;
     min-height: 0;
-    height: 85vh;
+    height: 95vh;
     width: auto;
     position: relative;
     display: flex;
@@ -40,7 +40,6 @@ body {
 }
 .grid-item-row{
     grid-column: 1 / -1; /* Span full width (from the first column to the last) */
-    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -170,12 +169,17 @@ h3{
 }
 .buttons{
     margin-top: 10px;
-    margin-left: 2px;
+    margin-left: 37.5px;
     font-size: 1.4em;
     color: #aab8c2;
+    display: inline-grid;
+    grid-template-columns: repeat(4, 75px);
+    gap: 35px;
 }
 .buttons i{
-    width: 80px;
+    flex: 1;
+    width: 20%;
+    margin-right: 20%;
 }
 .icon{
     padding: 5%;

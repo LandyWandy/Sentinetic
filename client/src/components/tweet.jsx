@@ -12,10 +12,19 @@ function Tweet({ tweet }) {
             <NameWithHandle /><Time createdAt={tweet.createdAt}/>
             <Message text={tweet.text}/>
             <div className='buttons'>
-                <CommentButton comments={tweet.comments}/> 
-                <LikeButton likes={tweet.likes}/>
-                <RetweetButton retweets={tweet.retweets}/>
-                <ShareButton />
+                <div className="button">
+                    <CommentButton comments={tweet.comments}/> 
+                </div>
+                <div className="button">
+                    <LikeButton likes={tweet.likes}/>
+                </div>
+                <div className="button">
+                    <RetweetButton retweets={tweet.retweets}/>
+                </div>
+                <div className="button">
+                    <ShareButton />
+                </div>
+                
             </div>
         </div>
     </div>
@@ -57,17 +66,17 @@ function Time({ createdAt }) {
 
 const LikeButton = ({ likes }) => (
     <span>
-    {likes} <i className='fa fa-heart like-button'/> 
+        <i className='fa fa-heart like-button'/> {likes} 
     </span>
 );
 const CommentButton = ({ comments }) => (
     <span>
-    {comments} <i className='far fa-comment'/>
+        <i className='far fa-comment'/> {comments}
     </span>
 );
 const RetweetButton = ({ retweets }) => (
     <span>
-    {retweets} <i className='fa fa-retweet retweet-button'/>
+        <i className='fa fa-retweet retweet-button'/> {retweets} 
     </span>
 );
 const ShareButton = () => (
