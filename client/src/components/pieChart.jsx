@@ -64,8 +64,8 @@ export default class Stats extends PureComponent {
   render() {
     const pieData = [
       { name: 'Positive', value: this.props.positive, fill: '#47b39c' },
-      { name: 'Negative', value: this.props.negative, fill: '#999999' },
-      { name: 'Neutral', value: this.props.neutral, fill: '#EC6b56' }
+      { name: 'Negative', value: this.props.negative, fill: '#EC6B56' },
+      { name: 'Neutral', value: this.props.neutral, fill: '#999999' }
     ];
 
     return (
