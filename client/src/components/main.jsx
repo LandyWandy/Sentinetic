@@ -35,7 +35,7 @@ function Main({onLogout}) {
         if (userInput.trim() === '') return; 
 
         // check
-        const formattedInput = userInput.startsWith('#') ? userInput : `#${userInput}`;
+        const formattedInput = userInput.startsWith('#') ? userInput.slice(1) : userInput;
 
         // Here, we call the addSearch mutation
         const { data } = await addSearch({ variables: { searchTerm: formattedInput } });

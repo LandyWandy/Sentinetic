@@ -1,5 +1,12 @@
 # **Sentinetic**
 
+## **Updates 📢**
+
+> **Date (e.g., August 10, 2023):** We've made some changes! Sentinetic has been refactored to utilize the Mastodon API instead of the Twitter API. This shift was made due to cost considerations related to the Twitter API. Users can now analyze sentiments from Mastodon posts. Thank you for your understanding and continued support!
+
+---
+
+
 ## **Table of Contents**
 
 - [Description](#description)
