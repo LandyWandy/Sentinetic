@@ -39,7 +39,7 @@ User-Friendly Interface: With a clean and intuitive interface, the app ensures a
 
 ## **How to Use**
 
-1. Visit the web application at https://www.ourapp.com
+1. Visit the web application at https://sentinetic-987fae0a7fa7.herokuapp.com/
 
 2. In the search bar, enter the hashtag you want to analyze (e.g., #AI, #ClimateChange, #Technology).
 
