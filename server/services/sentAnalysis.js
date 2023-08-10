@@ -1,16 +1,22 @@
-const fetchTweetsForAi = require('./twitter.api');
+// Importing chatgpt and mastadon APIs
+const fetchTootsForAi = require('./mastadon.api');
 const aiSentAnalysis = require('./chatgpt.api');
 
+// Function to perform sentiment analysis on toots fetched from Mastodon
 const runSentimentAnalysis = async (searchTerm) => {
-  const { tweets } = await fetchTweetsForAi(searchTerm);
-  // Extract only the text of each tweet
+  // Fetching toots using the search term
+  const { tweets } = await fetchTootsForAi(searchTerm);
+  
+  // Extracting only the text content from the toots
   const tweetsTexts = tweets.map(tweet => tweet.text);
+  
+  // Performing sentiment analysis on the extracted text
   const sentimentResult = await aiSentAnalysis(tweetsTexts);
 
+  // Logging and returning the results
   if (sentimentResult) {
     const { positive, negative, neutral } = sentimentResult;
     console.log({ searchTerm, tweets, positive, negative, neutral });
-    // Logs: { searchTerm: W, tweets: [..], positive: X, negative: Y, neutral: Z }
     return { searchTerm, tweets, positive, negative, neutral };
   } else {
     console.log('Sentiment analysis failed.');
@@ -18,4 +24,5 @@ const runSentimentAnalysis = async (searchTerm) => {
   }
 };
 
+// Exporting the combined function
 module.exports = runSentimentAnalysis;
