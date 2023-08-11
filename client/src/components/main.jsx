@@ -1,4 +1,4 @@
-// require('dotenv').config();
+// Import necessary dependencies and components
 import Tweet from "./tweet";
 import { useState, useEffect } from 'react';
 import '../css/style.css';
@@ -8,28 +8,35 @@ import { ADD_SEARCH } from "../utils/mutations";
 import { GET_SEARCH } from "../utils/queries";
 import logo from "../images/sentinetic-logo.svg"
 
+// Main functional component
 function Main({onLogout}) {
+    // State Variables
     const [userInput, setUserInput] = useState('');
     const [recentSearches, setRecentSearches] = useState([]);
-    const [addSearch] = useMutation(ADD_SEARCH);
     const [searchData, setSearchData] = useState({});
 
+    // Apollo Hooks
+    const [addSearch] = useMutation(ADD_SEARCH);
+    const { refetch } = useQuery(GET_SEARCH, { skip: true });
+
+    // Input Handler for Search Input
     const handleInput = (e) => {
         setUserInput(e.target.value);
     }
 
-    const { refetch } = useQuery(GET_SEARCH, { skip: true });
-
+    // Search recent terms by clicking on them
     async function handleRecentSearchClick(searchTerm) {
         const { data } = await refetch({ searchTerm });
         console.log(data)
         // Now you can handle the data as you need...
         setSearchData(data.getSearch);
+
+        // Function to find the tweet with most likes
         const mostLikedTweet = data.getSearch.tweets.reduce((prev, current) => (prev.likes > current.likes) ? prev : current);
         setSearchData({ ...data.getSearch, mostLikedTweet: mostLikedTweet });
     }
     
-
+    // Submit Search Query
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         if (userInput.trim() === '') return; 
@@ -49,7 +56,7 @@ function Main({onLogout}) {
     
         // console.log(searchData.tweets);
 
-        // save toi lcoal stoaraygae
+        // Update recent searches list
         const newRecentSearches = [formattedInput, ...recentSearches.slice(0, 5)]; // Limit to 6 recent searches
         localStorage.setItem('recentSearches', JSON.stringify(newRecentSearches));
         setRecentSearches(newRecentSearches);
@@ -66,7 +73,7 @@ function Main({onLogout}) {
         }
     };
 
-    // Load the recent searches on init
+    // Load the recent searches on initial render
     useEffect(() => {
         getRecentSearches();
     }, []);

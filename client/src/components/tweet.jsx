@@ -1,10 +1,13 @@
 import '../css/style.css';
 import pfp from '../images/BlankPFP.jpeg';
 
+// Main Tweet component that receives a single tweet as a prop.
 function Tweet({ tweet }) {
+    // If there's no tweet data provided, display a loading state.
     if (!tweet) {
-        return <div></div>; // replace this with a loading spinner or any loading UI
+        return <div></div>; // You can replace this with a loading spinner or another appropriate UI element.
     }
+
    return (
     <div className='tweet'>
         <Avatar />
@@ -24,13 +27,13 @@ function Tweet({ tweet }) {
                 <div className="button">
                     <ShareButton />
                 </div>
-                
             </div>
         </div>
     </div>
    )
 }
 
+// Component for displaying the user's avatar.
 function Avatar() {
     return(
         <img
@@ -41,6 +44,7 @@ function Avatar() {
     )
 }
 
+// Component to display the tweet's main content/message.
 function Message({ text }) {
     return(
         <div className='message'>
@@ -49,6 +53,7 @@ function Message({ text }) {
     )
 }
 
+// Component to display a hardcoded user name and handle.
 function NameWithHandle() {
     return(
         <span className='name-with-handle'>
@@ -58,12 +63,14 @@ function NameWithHandle() {
     )
 }
 
+// Component to display the time when the tweet was created.
 function Time({ createdAt }) {
     const date = new Date(createdAt);
-    const formattedDate = date.toLocaleDateString(); // default formatting
+    const formattedDate = date.toLocaleDateString(); // Default formatting. This can be customized as needed.
     return <span className='time'>{formattedDate}</span>;
 }
 
+// These components represent the different action buttons found on a tweet.
 const LikeButton = ({ likes }) => (
     <span>
         <i className='fa fa-heart like-button'/> {likes} 
