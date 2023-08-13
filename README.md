@@ -57,6 +57,7 @@ User-Friendly Interface: With a clean and intuitive interface, the app ensures a
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+![Mastodon](https://img.shields.io/badge/-MASTODON-%232B90D9?style=for-the-badge&logo=mastodon&logoColor=white)
 - Front End: React, Bootstrap, CSS
 
 - Backend: GraphQL, Node.js, Express.js, MongoDB, Mongoose ODM, Apollo, JWT
